@@ -85,6 +85,46 @@
     <v-main>
       <router-view></router-view>
     </v-main>
+    
+    <v-text-field
+            
+            outlined
+            label="I want to....."
+            append-outer-icon="mdi-plus-circle"
+            
+          ></v-text-field>
+    
+    <v-footer
+      v-bind="localAttrs"
+      :padless="padless"
+    >
+      <v-card
+        flat
+        tile
+        width="100%"
+        class="teal text-center"
+      >
+        <v-card-text>
+          <v-btn
+            v-for="icon in icons"
+            :key="icon"
+            class="mx-4"
+            icon
+          >
+            <v-icon size="24px" color="white">
+              {{ icon }}
+            </v-icon>
+          </v-btn>
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        
+      </v-card>
+
+    </v-footer>
+
+    
   </v-app>
   
 </template>
@@ -97,6 +137,32 @@
           { title: 'Todo', icon: 'mdi-checkbox-marked-circle-plus-outline',to: '/' },
           { title: 'About', icon: 'mdi-help-box',to: '/about' },
         ],
+         icons: [
+        'mdi-check-circle',
+        'mdi-calendar',
+        'mdi-cog',
+      ],
+      items: [
+        'default',
+        'absolute',
+        'fixed',
+      ],
+      padless: false,
+      variant: 'default',
         }),
+        computed: {
+      localAttrs () {
+        const attrs = {}
+
+        if (this.variant === 'default') {
+          attrs.absolute = false
+          attrs.fixed = false
+        } else {
+          attrs[this.variant] = true
+        }
+        return attrs
+      },
+    },
   }
+  
 </script>
