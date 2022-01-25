@@ -1,6 +1,5 @@
 <template>
 <div class="home ">
-
     <v-list
      flat
      >
@@ -36,8 +35,22 @@
             </template>
             
         </v-list-item>
+        
        </div>
     </v-list>
+     <v-text-field
+     outlined 
+     color="teal"
+     label="Add Task"
+      append-outer-icon="mdi-plus-circle"
+      
+      
+      ></v-text-field>
+
+
+
+      
+    
 </div>
 </template>
 
@@ -68,7 +81,6 @@ export default {
               done: false
             },
           ]
-
         }
     },
     methods:{
@@ -80,6 +92,13 @@ export default {
         this.tasks = this.tasks.filter(task => task.id !== id)
       }
     }
-
 }
+
+    
+    
+    
+
+
+
+
 </script>

@@ -1,13 +1,12 @@
 <template>
   <v-app id="inspire">
-     <v-navigation-drawer 
-     color=""
-     v-model="drawer"
-     app>
-      <v-list-item >
+    <v-navigation-drawer 
+    v-model="drawer"
+    app>
+      <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6">
-            Vue Todo
+           Vue Todo
           </v-list-item-title>
           <v-list-item-subtitle>
             best todo!
@@ -25,6 +24,7 @@
           v-for="item in items"
           :key="item.title"
           :to="item.to"
+
           link
         >
           <v-list-item-icon>
@@ -39,17 +39,19 @@
     </v-navigation-drawer>
 
     <v-app-bar
-       app
+    app
       color="teal"
       dense
       dark
-      prominent
+      
     >
-      <v-app-bar-nav-icon @click="drawer= !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>ALL TASK</v-toolbar-title>
+      <v-toolbar-title>All Tasks</v-toolbar-title>
 
       <v-spacer></v-spacer>
+
+      
 
       <v-btn icon>
         <v-icon>mdi-checkbox-blank-badge-outline</v-icon>
@@ -75,25 +77,14 @@
             :key="n"
             @click="() => {}"
           >
-            <v-list-item-title>Task {{ n }}</v-list-item-title>
-            
+            <v-list-item-title>Option {{ n }}</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
     </v-app-bar>
-
     <v-main>
       <router-view></router-view>
     </v-main>
-    
-    <v-text-field
-            
-            outlined
-            label="I want to....."
-            append-outer-icon="mdi-plus-circle"
-            
-          ></v-text-field>
-    
     <v-footer
       v-bind="localAttrs"
       :padless="padless"
@@ -123,8 +114,8 @@
       </v-card>
 
     </v-footer>
-
     
+        
   </v-app>
   
 </template>
@@ -132,12 +123,8 @@
 <script>
   export default {
     data: () => ({
-       drawer: null,
-        items: [
-          { title: 'Todo', icon: 'mdi-checkbox-marked-circle-plus-outline',to: '/' },
-          { title: 'About', icon: 'mdi-help-box',to: '/about' },
-        ],
-         icons: [
+      icons: [
+        
         'mdi-check-circle',
         'mdi-calendar',
         'mdi-cog',
@@ -149,8 +136,18 @@
       ],
       padless: false,
       variant: 'default',
-        }),
-        computed: {
+
+       drawer: null,
+       items: [
+          { title: 'Todo', icon: 'mdi-checkbox-marked-circle-plus-outline', to:'/' },
+          
+          { title: 'About', icon: 'mdi-help-box', to:'/about' },
+        ],
+        
+        
+
+     }),
+     computed: {
       localAttrs () {
         const attrs = {}
 
@@ -163,6 +160,26 @@
         return attrs
       },
     },
+     
   }
-  
 </script>
+  
+     
+    
+     
+     
+        
+
+        
+
+        
+  
+
+  
+        
+    
+       
+        
+    
+
+
