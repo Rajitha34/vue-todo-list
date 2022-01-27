@@ -1,5 +1,17 @@
 <template>
 <div class="home ">
+   <v-text-field  
+             v-model="newTaskTitle"
+             @click:append-outer="addTask"
+             @keyup.enter="addTask"
+            class="pa-3"
+            outlined
+            label="I want to...."
+            append-outer-icon="mdi-plus-circle "
+            color="teal"
+            hide-details
+            clearable
+          ></v-text-field>
     <v-list
      flat
      >
@@ -26,10 +38,13 @@
           <v-btn
            @click.stop="deleteTask(task.id)" 
           icon
+          
          >
             
             <v-icon color="teal">mdi-delete</v-icon>
+             
           </v-btn>
+          
         </v-list-item-action>
 
             </template>
@@ -38,15 +53,7 @@
         
        </div>
     </v-list>
-     <v-text-field
-     outlined 
-     color="teal"
-     label="Add Task"
-      append-outer-icon="mdi-plus-circle"
-      
-      
-      ></v-text-field>
-
+     
 
 
       
@@ -59,6 +66,7 @@ export default {
     name: 'Home',
     data() {
         return {
+          newTaskTitle: '',
           tasks: [
             {
               id: 1,
@@ -83,7 +91,16 @@ export default {
           ]
         }
     },
-    methods:{
+    methods:{ 
+      addTask() {
+        let newTask={
+          id:Date.now(),
+          title: this.newTaskTitle,
+          done:false
+        }
+        this.tasks.push(newTask)
+        this.newTaskTitle=''
+      },
       doneTask(id) {
         let task = this.tasks.filter(task => task.id === id)[0]
         task.done = !task.done
