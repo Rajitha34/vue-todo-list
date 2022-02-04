@@ -37,20 +37,11 @@
         <v-btn icon>
             <v-icon>mdi-checkbox-blank-badge-outline</v-icon>
         </v-btn>
-
-        <v-menu left bottom>
-            <template v-slot:activator="{ on, attrs }">
-                <v-btn icon v-bind="attrs" v-on="on">
+         <v-btn icon>
                     <v-icon>mdi-dots-horizontal-circle-outline</v-icon>
                 </v-btn>
-            </template>
 
-            <v-list>
-                <v-list-item v-for="n in 3" :key="n" @click="() => {}">
-                    <v-list-item-title>Option {{ n }}</v-list-item-title>
-                </v-list-item>
-            </v-list>
-        </v-menu>
+       
     </v-app-bar>
     <v-main>
         <router-view></router-view>
@@ -58,7 +49,7 @@
     <v-footer v-bind="localAttrs" :padless="padless">
         <v-card flat tile width="100%" class="teal text-center">
             <v-card-text>
-                <v-btn v-for="icon in icons" :key="icon" class="mx-4" icon>
+                <v-btn v-for="icon in icons" :key="icon" class="mx-16" icon>
                     <v-icon size="24px" color="white">
                         {{ icon }}
                     </v-icon>
