@@ -12,10 +12,27 @@
       hide-details
       clearable
     ></v-text-field>
+    <v-menu
+      :close-on-content-click="false"
+      transition="scale-transition"
+      offset-y
+    >
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          v-bind="attrs"
+          v-on="on"
+          class="teal white--text"
+          absolute
+          center
+          :style="{ left: '90%', trasform: 'translatex(-95%)' }"
+        >
+          calendar
+        </v-btn>
+      </template>
+      <v-date-picker v-model="date" no-title></v-date-picker>
+    </v-menu>
     <h2 class="pl-5">TODAY</h2>
-    <v-row justify="center">
-      <v-date-picker v-model="date"></v-date-picker>
-    </v-row>
+
     <v-list flat>
       <div v-for="task in tasks" :key="task.id">
         <v-list-item
@@ -156,9 +173,9 @@ export default {
       };
       this.tasks.push(newTask);
       this.newTaskTitle = "";
-      localStorage.setItem('tasks',JSON.stringify(newTask));
+      localStorage.setItem("tasks", JSON.stringify(newTask));
     },
-    
+
     doneTask(id) {
       let task = this.tasks.filter((task) => task.id === id)[0];
       task.done = !task.done;
@@ -176,18 +193,15 @@ export default {
       return d.toISOString().split("T")[0];
     },
     getUpcomingdate() {
-      
       let d = new Date();
       d.setDate(d.getDate() + 5);
       return d.toISOString().split("U")[0];
     },
     getSomedaydate() {
-      
       let d = new Date();
       d.setDate(d.getDate() + 10);
       return d.toISOString().split("S")[0];
     },
-
   },
 };
 </script>
